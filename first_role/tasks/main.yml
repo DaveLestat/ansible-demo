@@ -7,4 +7,4 @@
 - name: add text to index file
   lineinfile:
     path: /var/www/html/test.txt
-    line: <h1>First ansible page</h1>
+    line: "{{ line }}"
