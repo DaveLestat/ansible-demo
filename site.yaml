@@ -1,0 +1,12 @@
+---
+- name: My first playbook
+  hosts: tags_Name_dcerino_ansible
+  gather_facts: false
+  become: true
+  vars_files:
+    - "vars.yaml"
+
+  roles:
+    - first_role
+
+    

@@ -1,0 +1,10 @@
+---
+# tasks file for first_role
+- name: add index file
+  file:
+    path: /var/www/html/test.txt
+    state: touch
+- name: add text to index file
+  lineinfile:
+    path: /var/www/html/test.txt
+    line: {{ line }}
