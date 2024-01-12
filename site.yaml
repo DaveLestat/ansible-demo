@@ -1,14 +1,10 @@
 ---
 - name: My first playbook
-  hosts: tags_Name_dcerino_ansible
+  hosts: tags_Name_dcerino_ansible #is this our second instance?
   gather_facts: false
   become: true
   vars_files:
     - "vars.yaml"
 
   roles:
-    - first_role
-    - secod_role
-
-
-    
+    - bucket_create
