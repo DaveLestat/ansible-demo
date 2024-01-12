@@ -1,7 +1,7 @@
 ---
 - name: My first playbook
-  hosts: tags_Name_dcerino_ansible #is this our second instance?
-  gather_facts: false
+  hosts: tags_Name_dcerino_ansible #is this our second instance? no it 1st
+  gather_facts: true
   become: true
   vars_files:
     - "vars.yaml"

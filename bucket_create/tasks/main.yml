@@ -2,38 +2,38 @@
 # tasks file for bucket_create
 - name: prepare S3 bucket
   block:
-    - name: make sure boto, boto3 and botocore installed
-      pip:
-          name: "{{ item }}"
-      loop:
-        - boto
-        - boto3
-        - botocore
-  #   - name: define S3 bucket policy
-  #     set_fact: 
-  #       s3_bucket_policy: |
-  #         {
-  #           "Version": "2012-10-17"
-  #           "Statement": [
-  #             {
-  #               "Sid": "PublicRead",
-  #               "Effect": "Allow",
-  #               "Principal": "*",
-  #               "Action": "s3:GetObject",
-  #               "Resource": "arn:aws:s3:::httpdlogs-vkb/*"
-  #             }
-  #           ]
-  #         }
-  #   - name: create S3 bucket
-  #     s3_bucket:
-  #       name: httpdlogs-vkb
-  #       region: us-east-1
-  #       state: present
-  #       policy: "{{ s3_bucket_policy }}"
-  #       public_access:
-  #         block_public_acls: false
-  #         ignore_public_acls: false
-  #         block_public_policy: false
-  #         restrict_public_buckets: false
+    # - name: make sure boto, boto3 and botocore installed
+    #   pip:
+    #       name: "{{ item }}"
+    #   loop:
+    #     - boto
+    #     - boto3
+    #     - botocore
+    - name: define S3 bucket policy
+      set_fact: 
+        s3_bucket_policy: |
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "PublicRead",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::httpdlogs-dclogs/*"
+              }
+            ]
+          }
+    - name: create S3 bucket
+      s3_bucket:
+        name: httpdlogs-dclogs
+        region: us-east-1
+        state: present
+        policy: "{{ s3_bucket_policy }}"
+        public_access:
+          block_public_acls: false
+          ignore_public_acls: false
+          block_public_policy: false
+          restrict_public_buckets: false
 
-  # tags: ['never', 'create']
+  tags: ['never', 'create']
